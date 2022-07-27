@@ -1,0 +1,13 @@
+{
+    "name": "webpajooh/feedreaderbot",
+    "type": "project",
+    "authors": [
+        {
+            "name": "WebPajooh",
+            "email": "webpajooh@gmail.com"
+        }
+    ],
+    "require": {
+        "webpajooh/telebot": "^1.5"
+    }
+}
