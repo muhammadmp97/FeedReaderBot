@@ -10,6 +10,20 @@ $feeds = json_decode(file_get_contents(__DIR__ . '/config/feeds.json'))->feeds;
 $tg = new TeleBot($config['bot_token']);
 
 try {
+    $tg->listen('/list', function () use ($tg, $config, $feeds) {
+        $links = "<b>Followed feeds:</b>\n";
+        foreach ($feeds as $feed) {
+            $links .=  "🔗 <code>{$feed->url}</code>\n";
+        }
+
+        $tg->sendMessage([
+            'chat_id' => $config['owner_user_id'],
+            'reply_to_message_id' => $tg->message->message_id,
+            'text' => $links,
+            'parse_mode' => 'html',
+        ]);
+    });
+
     $tg->listen('/add %p', function ($url) use ($tg, $config, $feeds) {
         foreach ($feeds as $feed) {
             if ($url === $feed->url) {
