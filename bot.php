@@ -38,6 +38,7 @@ try {
         $feeds[] = [
             'url' => $url,
             'reader' => 'dev.to',
+            'last_item_url' => '',
         ];
 
         file_put_contents(__DIR__ . '/config/feeds.json', json_encode(['feeds' => $feeds]));
