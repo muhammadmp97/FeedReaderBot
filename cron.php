@@ -28,7 +28,7 @@ foreach ($feeds as $feed) {
     }
 
     foreach ($feedContent->channel->item as $item) {
-        if ((string) $item->link == $feed->last_item_url) {
+        if ((string) $item->link === $feed->last_item_url) {
             break;
         }
 
